@@ -1,13 +1,14 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
+
 def home(request):
-    a = 10/0
+    a = 10 / 0
     return HttpResponse("Hello")
-    
-    
-#========================================================================================================================================
+
+
+# ========================================================================================================================================
 """
 pre_save---------------------------------------------------------------------------------------------------------->
 django.db.models.signals.pre_save
@@ -29,7 +30,7 @@ Arguments sent with this signal:
     The set of fields to update as passed to Model.save(), or None if update_fields wasn’t passed to save().
 
 """
-#===============================================================================================================================================================
+# ===============================================================================================================================================================
 """
 post_save----------------------------------------------------------------------------------------------------------------->
 django.db.models.signals.post_save
@@ -52,7 +53,7 @@ Arguments sent with this signal:
 <>update_fields
     The set of fields to update as passed to Model.save(), or None if update_fields wasn’t passed to save().
 """
-#======================================================================================================================================
+# ======================================================================================================================================
 """ 
 pre_delete--------------------------------------------------------------------------------------------->
 django.db.models.signals.pre_delete
@@ -70,7 +71,7 @@ Arguments sent with this signal:
 <>origin
     The origin of the deletion being the instance of a Model or QuerySet class.
 """
-#========================================================================================================================================
+# ========================================================================================================================================
 """
 post_delete---------------------------------------------------------------------------------------->
 django.db.models.signals.post_delete
@@ -93,7 +94,7 @@ The database alias being used.
 <>origin
     The origin of the deletion being the instance of a Model or QuerySet class.
 """
-#=======================================================================================================================================
+# =======================================================================================================================================
 """
 pre_init-------------------------------------------------------------------------------------------->
 django.db.models.signals.pre_init
@@ -110,7 +111,7 @@ Arguments sent with this signal:
     A dictionary of keyword arguments passed to __init__().
 
 """
-#========================================================================================================================================
+# ========================================================================================================================================
 """
 post_init--------------------------------------------------------------------------------------------->
 django.db.models.signals.post_init
@@ -125,7 +126,7 @@ Arguments sent with this signal:
     The actual instance of the model that's just been created.
 
 """
-#=====================================================================================================================================
+# =====================================================================================================================================
 """
 request_started--------------------------------------------------------------------------------------->
 django.core.signals.request_started
@@ -140,7 +141,7 @@ Arguments sent with this signal:
     The environ dictionary provided to the request.
 
 """
-#=====================================================================================================================================
+# =====================================================================================================================================
 """
 request_finished
 django.core.signals.request_finished
@@ -152,7 +153,7 @@ Arguments sent with this signal:
 <>sender
     The handler class, as above.
 """
-#======================================================================================================================================
+# ======================================================================================================================================
 """
 pre_migrate-------------------------------------------------------------------------------------->
 django.db.models.signals.pre_migrate
@@ -190,7 +191,7 @@ For example, the django.contrib.auth app only prompts to create a superuser when
     An instance of Apps containing the state of the project before the migration run. 
     It should be used instead of the global apps registry to retrieve the models you want to perform operations on.
 """
-#========================================================================================================================================
+# ========================================================================================================================================
 """
 post_migrate
 django.db.models.signals.post_migrate
@@ -232,4 +233,19 @@ For example, the django.contrib.auth app only prompts to create a superuser when
     It should be used instead of the global apps registry to retrieve the models you want to perform operations on.
 
 """
-#=====================================================================================================================================
+# =====================================================================================================================================
+"""
+connection_created
+django.db.backends.signals.connection_created
+
+Sent when the database wrapper makes the initial connection to the database. 
+This is particularly useful if you'd like to send any post connection commands to the SQL backend.
+
+Arguments sent with this signal:
+
+<>sender
+    The database wrapper class - i.e. django.db.backends.postgresql.DatabaseWrapper or django.db.backends.mysql.DatabaseWrapper, etc.
+<>connection
+    The database connection that was opened. 
+    This can be used in a multiple-database configuration to differentiate connection signals from different databases.
+"""

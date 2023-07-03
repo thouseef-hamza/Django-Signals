@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import pre_init,post_init,pre_save,post_save,pre_delete,post_delete,pre_migrate,post_migrate
 from django.core.signals import request_started,request_finished,got_request_exception
+from django.db.backends.signals import connection_created
 
 @receiver(user_logged_in,sender=User)
 def login_success(sender,request,user,**kwargs):
@@ -169,5 +170,14 @@ def at_end_migrate_flush(sender,app_config,verbosity,interactive,using,plan,apps
 
 # post_migrate.connect(at_end_migrate_flush)
 
+@receiver(connection_created)
+def conn_db(sender,connection,**kwargs):
+    print("------------------------------------------------------------------------------------------------------------------------->")
+    print("Initial connection to database........")
+    print("Sender:  ",sender)
+    print("Connection:  ",connection)
+    print("Kwargs:  ",kwargs)
+
+# connection_created.connect(conn_db)
     
     
